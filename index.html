@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Steer the Ship</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Outfit:wght@400;600&display=swap"
+    rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -15,7 +18,8 @@
       user-select: none;
     }
 
-    html, body {
+    html,
+    body {
       width: 100vw;
       height: 100vh;
       overflow: hidden;
@@ -204,11 +208,17 @@
     }
 
     @keyframes spinFast {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(720deg); }
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(720deg);
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Screen 1: Steering Scene with blended button -->
@@ -224,7 +234,8 @@
     <div class="steer-btn-wrapper">
       <button class="steer-wheel-btn" id="steerBtn">
         <svg class="wheel-icon" id="wheelIcon" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 2.06c3.27.44 5.92 2.87 6.64 6.04L16.2 11c-.48-1.57-1.74-2.81-3.2-3.32V4.06zm-2 0V7.68c-1.46.51-2.72 1.75-3.2 3.32L4.36 10.1c.72-3.17 3.37-5.6 6.64-6.04zm-7.94 8c.04.66.16 1.3.36 1.9l3.52-1.02c.04-.61.16-1.2.36-1.76L3.06 12.06zm13.14 0c.2.56.32 1.15.36 1.76l3.52 1.02c.2-.6.32-1.24.36-1.9l-4.24-.88zm-3.2 2.32c-.51 1.46-1.75 2.72-3.32 3.2v3.62c3.27-.44 5.92-2.87 6.64-6.04l-3.32-.78zm-5.68 0l-3.32.78c.72 3.17 3.37 5.6 6.64 6.04v-3.62c-1.57-.48-2.81-1.74-3.32-3.2zM12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+          <path
+            d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 2.06c3.27.44 5.92 2.87 6.64 6.04L16.2 11c-.48-1.57-1.74-2.81-3.2-3.32V4.06zm-2 0V7.68c-1.46.51-2.72 1.75-3.2 3.32L4.36 10.1c.72-3.17 3.37-5.6 6.64-6.04zm-7.94 8c.04.66.16 1.3.36 1.9l3.52-1.02c.04-.61.16-1.2.36-1.76L3.06 12.06zm13.14 0c.2.56.32 1.15.36 1.76l3.52 1.02c.2-.6.32-1.24.36-1.9l-4.24-.88zm-3.2 2.32c-.51 1.46-1.75 2.72-3.32 3.2v3.62c3.27-.44 5.92-2.87 6.64-6.04l-3.32-.78zm-5.68 0l-3.32.78c.72 3.17 3.37 5.6 6.64 6.04v-3.62c-1.57-.48-2.81-1.74-3.32-3.2zM12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
         </svg>
         STEER THE SHIP
       </button>
@@ -235,8 +246,9 @@
   <div class="video-viewport" id="videoViewport">
     <!-- Subtle return button in top corner -->
     <button class="return-btn" id="returnBtn" title="Steer Again">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 19l-7-7 7-7" />
       </svg>
     </button>
 
@@ -248,19 +260,20 @@
   <script>
     /* =========================================================
        7 Videos Probabilities:
-       - SA_MetBat-ezremove.mp4: 30%
-       - SA_UncharteddGame-ezremove.mp4: 30%
-       - 5 WhatsApp videos: 8% each (40% total)
+       - SA_MetBat-ezremove.mp4: 20%
+       - SA_UncharteddGame-ezremove.mp4: 20%
+       - WhatsApp Video 2026-10-12 at 12.13.27 AM (1).mp4: 8%
+       - Other 4 WhatsApp videos: 13% each (52% total)
        Total = 100%
        ========================================================= */
     const VIDEOS = [
-      { file: "SA_MetBat-ezremove.mp4", prob: 30 },
-      { file: "SA_UncharteddGame-ezremove.mp4", prob: 30 },
-      { file: "WhatsApp Video 2026-10-12 at 12.13.26 AM.mp4", prob: 8 },
-      { file: "WhatsApp Video 2026-10-12 at 12.13.26 AM (1).mp4", prob: 8 },
-      { file: "WhatsApp Video 2026-10-12 at 12.13.27 AM.mp4", prob: 8 },
+      { file: "SA_MetBat-ezremove.mp4", prob: 20 },
+      { file: "SA_UncharteddGame-ezremove.mp4", prob: 20 },
+      { file: "WhatsApp Video 2026-10-12 at 12.13.26 AM.mp4", prob: 13 },
+      { file: "WhatsApp Video 2026-10-12 at 12.13.26 AM (1).mp4", prob: 13 },
+      { file: "WhatsApp Video 2026-10-12 at 12.13.27 AM.mp4", prob: 13 },
       { file: "WhatsApp Video 2026-10-12 at 12.13.27 AM (1).mp4", prob: 8 },
-      { file: "WhatsApp Video 2026-10-12 at 12.13.28 AM.mp4", prob: 8 }
+      { file: "WhatsApp Video 2026-10-12 at 12.13.28 AM.mp4", prob: 13 }
     ];
 
     const sceneContainer = document.getElementById('sceneContainer');
@@ -360,4 +373,5 @@
     });
   </script>
 </body>
+
 </html>
